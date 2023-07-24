@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
 export default class Navbar extends Component {
     render() {
+
+        const { country } = this.props;
+        let countryLabel;
+    
+        // Use switch case to set the country label based on the selected country
+        switch (country) {
+          case 'us':
+            countryLabel = 'USA';
+            break;
+          case 'in':
+            countryLabel = 'India';
+            break;
+          case 'ca':
+            countryLabel = 'Canada';
+            break;
+          // Add other cases for additional countries if needed
+          default:
+            countryLabel = 'Country';
+            break;
+        }
         return (
             <div style={{ position: 'sticky', top: 0, zIndex: 100 }}>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
-                        <NavLink className="navbar-brand" to="/">TV9 News</NavLink>
+                        <NavLink className="navbar-brand" to="/">Kens~News</NavLink>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -22,13 +41,15 @@ export default class Navbar extends Component {
                                 <li className="nav-item"> <NavLink to="/technology" className="nav-link" activeclassname="active" >Technology</NavLink> </li>
                             </ul>
                             <div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   Country
+                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{'minWidth': '8rem'}}>
+                                   {countryLabel}
+                                   
                                 </button>
-                                <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item">India</Link></li>
-                                    <li><Link className="dropdown-item">USA</Link></li>
-                                    {/* <li><Link className="dropdown-item" onClick={this.props.countryUpdate('in')}>India</Link></li> */}
+                                <ul className="dropdown-menu" style={{'minWidth': '8rem'}}>
+                                    <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('us')}>USA</Link></li>
+                                    <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('in')}>India</Link></li>
+                                    <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('ca')}>Canada</Link></li>
+
                                 </ul>
                             </div>
                             <div className={`form-check form-switch text-light ms-4`}>

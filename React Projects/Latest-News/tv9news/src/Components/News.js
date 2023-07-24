@@ -38,8 +38,12 @@ export class News extends Component {
   // function getting article correct with filter
   async fetchArticles() {
 
-    this.setState({ loading: true });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3433bbf108ca41b1bbc25bec3311389f&page=${this.state.pageNo}&pageSize=${this.state.pageSize}`;
+    this.setState({ loading: true, pageNo : 1 });
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3433bbf108ca41b1bbc25bec3311389f&page=${this.state.pageNo}&pageSize=${this.state.pageSize}`; // sohammodi13@gmail.com  => $oh@m321
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3beb4eeed2c14006bafb76809dfd3309&page=${this.state.pageNo}&pageSize=${this.state.pageSize}`;     // sohammmodi124421@gmail.com 
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=4b99ef06be0e4ea39fbfc3cf2fd86c0a&page=${this.state.pageNo}&pageSize=${this.state.pageSize}`; // sohammodi456@gmail.com
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=386c721da11e4522a3b2771e2cbdd8ee&page=${this.state.pageNo}&pageSize=${this.state.pageSize}`; // modis9842@mail.coml.com
+
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -95,7 +99,7 @@ export class News extends Component {
     const nextPageNo = this.state.pageNo + 1;
     this.setState({ loading: true, pageNo: nextPageNo });
 
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3433bbf108ca41b1bbc25bec3311389f&page=${nextPageNo}&pageSize=${this.state.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=386c721da11e4522a3b2771e2cbdd8ee&page=${nextPageNo}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -120,7 +124,7 @@ export class News extends Component {
     return (
       <>
         <div className='container my-5'>
-          <h2 className={`text-${this.props.mode === 'dark' ? 'light' : 'dark'}`}>KenNews - Top {this.capitalization(this.props.category)} Headlines </h2>
+          <h2 className={`text-${this.props.mode === 'dark' ? 'light' : 'dark'}`}>KensNews - Top {this.capitalization(this.props.category)} Headlines </h2>
           {this.state.loading && <Spinner />}
           <InfiniteScroll
             dataLength={this.state.articles.length}
