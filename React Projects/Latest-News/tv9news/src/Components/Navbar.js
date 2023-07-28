@@ -5,22 +5,22 @@ export default class Navbar extends Component {
 
         const { country } = this.props;
         let countryLabel;
-    
+
         // Use switch case to set the country label based on the selected country
         switch (country) {
-          case 'us':
-            countryLabel = 'USA';
-            break;
-          case 'in':
-            countryLabel = 'India';
-            break;
-          case 'ca':
-            countryLabel = 'Canada';
-            break;
-          // Add other cases for additional countries if needed
-          default:
-            countryLabel = 'Country';
-            break;
+            case 'us':
+                countryLabel = 'USA';
+                break;
+            case 'in':
+                countryLabel = 'India';
+                break;
+            case 'ca':
+                countryLabel = 'Canada';
+                break;
+            // Add other cases for additional countries if needed
+            default:
+                countryLabel = 'Country';
+                break;
         }
         return (
             <div style={{ position: 'sticky', top: 0, zIndex: 100 }}>
@@ -41,15 +41,14 @@ export default class Navbar extends Component {
                                 <li className="nav-item"> <NavLink to="/technology" className="nav-link" activeclassname="active" >Technology</NavLink> </li>
                             </ul>
                             <div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{'minWidth': '8rem'}}>
-                                   {countryLabel}
-                                   
+                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ 'minWidth': '8rem' }}>
+                                    {countryLabel}
+
                                 </button>
-                                <ul className="dropdown-menu" style={{'minWidth': '8rem'}}>
+                                <ul className="dropdown-menu" style={{ 'minWidth': '8rem' }}>
                                     <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('us')}>USA</Link></li>
                                     <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('in')}>India</Link></li>
                                     <li><Link className="dropdown-item" onClick={() => this.props.countryUpdate('ca')}>Canada</Link></li>
-
                                 </ul>
                             </div>
                             <div className={`form-check form-switch text-light ms-4`}>

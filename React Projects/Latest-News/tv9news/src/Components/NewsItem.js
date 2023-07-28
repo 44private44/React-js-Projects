@@ -8,8 +8,12 @@ export class NewsItem extends Component {
     return (
       <div>
         <div className="card card-style" style={{ border: mode === 'dark' ? '2px solid white' : '2px solid black' }}>
-          <span className="position-absolute translate-middle badge rounded-pill bg-danger" style={{'left': '16%', 'top' : '5%','padding' :'8px 8px' }}>{source.slice(0,18)}...
-          </span>
+          {/* <span className="position-absolute translate-middle badge rounded-pill bg-danger" style={{'left': '16%', 'top' : '5%','padding' :'8px 8px' }}>{source.slice(0,18)}...
+          </span> */}
+          <div className='d-flex justify-content-end' style={{'position':'absolute', 'right' : '2%', 'top' : '2%'}}>
+            <span className="badge rounded-pill bg-danger" style={{'padding' :'8px 8px' }}>{source}
+            </span>
+          </div>
           <img src={imgUrl} className="card-img-top imagecss" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
